@@ -13,7 +13,7 @@ const FAMILY={
     {name:'Ananya',role:'Doctor?',type:'dg',intro:'A brilliant mind with a heart for healing, the future doctor of the family.'}
    ]},
   {name:'Mr. Pawan',role:"Shyamlal's son",type:'sm',intro:'Son of Shyamlal Chaturvedi.',
-   wife:{name:'Khushbu Devi',role:'Mother',type:'mo',intro:'The fragrance of care and kindness that keeps our family together.'},
+   wife:{name:'Kushbu Devi',role:'Mother',type:'mo',intro:'The fragrance of care and kindness that keeps our family together.'},
    kids:[
     {name:'Shivansh',role:'Engineer',type:'ks',intro:'A brilliant mind that builds, fixes and figures everything out.'},
     {name:'Shivangi',role:'Doctor?',type:'dg',intro:'A brilliant mind in the making, with big dreams and the focus to match.'}
