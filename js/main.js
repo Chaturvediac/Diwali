@@ -7,15 +7,15 @@ const K={ga:['#3a2a7a','#f5b82e','#f1ece4'],gm:['#3a2a7a','#ff6fa5','#d8d3da'],s
 const av=t=>{const[b,c,h]=K[t];return `<svg viewBox="-30 -30 60 60"><rect x="-30" y="-30" width="60" height="60" fill="${b}"/>${(t=='dg'||t=='mo')?`<ellipse cy="2" rx="13" ry="15" fill="${h}"/>`:''}${t=='gm'?`<circle cy="-18" r="5" fill="${h}"/>`:''}<path d="M-24 30Q-22 10 0 8Q22 10 24 30Z" fill="${c}"/><circle cy="-4" r="10" fill="#e8b48a"/><path d="M-11 -4Q-11 -17 0 -17Q11 -17 11 -4Q6 -11 0 -11Q-6 -11 -11 -4Z" fill="${h}"/><circle cx="-3.5" cy="-3" r="1.3" fill="#2a1a1a"/><circle cx="3.5" cy="-3" r="1.3" fill="#2a1a1a"/></svg>`};
 let n=0;const esc=s=>(s||'').replace(/"/g,'&quot;');
 const P=p=>`<button class="person${p.me?' me':''}" style="--i:${n++}" data-n="${esc(p.name)}" data-r="${esc(p.role)}" data-t="${esc(p.intro)}">${av(p.type)}<b>${p.name}</b><small>${p.role}</small>${p.me?'<em>that\'s me</em>':''}</button>`;
-$('#treeBox').innerHTML=`<div class="gp">${P(FAMILY.grand[0])}<span class="heart">♥</span>${P(FAMILY.grand[1])}</div><div class="stem"></div><div class="row">${FAMILY.sons.map(s=>`<div class="br">${P(s)}<div class="row">${s.kids.map(k=>`<div class="br">${P(k)}</div>`).join('')}</div></div>`).join('')}</div>`;
+try{const C2=s=>`<div class="gp">${P(s)}${s.wife?`<span class="heart">♥</span>${P(s.wife)}`:''}</div>`;
+$('#treeBox').innerHTML=`<div class="gp">${P(FAMILY.grand[0])}<span class="heart">♥</span>${P(FAMILY.grand[1])}</div><div class="stem"></div><div class="row">${FAMILY.sons.map(s=>`<div class="br">${C2(s)}<div class="row">${s.kids.map(k=>`<div class="br">${P(k)}</div>`).join('')}</div></div>`).join('')}</div>`}catch(err){console.error('Family tree error:',err)}
 document.querySelectorAll('.rv,.tree').forEach(e=>io.observe(e));
 const open=o=>{o.classList.add('open');o.querySelector('button').focus()},shut=o=>o.classList.remove('open');
 document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>e.target===o&&shut(o)));
 addEventListener('keydown',e=>e.key==='Escape'&&document.querySelectorAll('.ov').forEach(shut));
 $('#openIntro').onclick=()=>{open($('#intro'));burst(innerWidth/2,innerHeight/3)};
 $('#meet').onclick=()=>{shut($('#intro'));$('#tree').scrollIntoView()};
-const C2=s=>`<div class="gp">${P(s)}<span class="heart">♥</span>${P(s.wife)}</div>`;
-$('#treeBox').innerHTML=`<div class="gp">${P(FAMILY.grand[0])}<span class="heart">♥</span>${P(FAMILY.grand[1])}</div><div class="stem"></div><div class="row">${FAMILY.sons.map(s=>`<div class="br">${C2(s)}<div class="row">${s.kids.map(k=>`<div class="br">${P(k)}</div>`).join('')}</div></div>`).join('')}</div>`;
+$('#treeBox').onclick=e=>{const p=e.target.closest('.person');if(!p)return;$('#pn').textContent=p.dataset.n;$('#pr').textContent=p.dataset.r;$('#pt').textContent=p.dataset.t;open($('#pop'))};
 $('#pc').onclick=()=>shut($('#pop'));
 const cv=$('#cv'),x=cv.getContext('2d'),W=800,H=1000,lg=new Image();let ok=false;lg.onload=()=>{ok=true;draw()};lg.src='assets/logo.png';
 function medal(cx,cy,r){x.beginPath();x.arc(cx,cy,r,0,7);x.fillStyle='#1c1048';x.fill();x.lineWidth=5;x.strokeStyle='#c98a1a';x.stroke();if(ok){x.save();x.beginPath();x.arc(cx,cy,r-4,0,7);x.clip();x.drawImage(lg,cx-r,cy-r,2*r,2*r);x.restore()}else{x.fillStyle='#f7c948';x.font=`600 ${r*.9}px "Cormorant Garamond"`;x.textAlign='center';x.fillText('AC',cx,cy+r*.28)}}
