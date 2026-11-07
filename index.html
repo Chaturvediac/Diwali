@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Diwali from the Chaturvedi Family</title>
+<meta property="og:title" content="Happy Diwali from the Chaturvedi Family"><meta property="og:description" content="Light a diya, get your Diwali certificate and meet the family."><meta property="og:image" content="assets/logo.png"><link rel="icon" href="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@400;500&family=Tiro+Devanagari+Hindi&family=Great+Vibes&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body>
+<canvas id="fw"></canvas><div id="petals" aria-hidden="true"></div>
+<nav><a class="brand" href="#home"><span class="logo"></span>Chaturvedi Family</a><div class="links"><a href="#home">Home</a><a href="#tree">Family Tree</a><a href="#cert">Certificate</a><a href="#diya">Diya Counter</a></div></nav>
+<header id="home"><div class="lant l1"></div><div class="lant l2"></div><span class="logo big"></span>
+<p class="happy">Happy</p><h1 class="shine">Diwali</h1><p class="hi">शुभ दीपावली</p><p class="warm">Warm wishes from the</p><p class="fam">Chaturvedi Family</p>
+<button id="openIntro" class="btn">Open my intro card →</button>
+<div class="diya" aria-hidden="true"><i class="flame"></i></div>
+<div class="tiles"><a href="#tree">Our Family Tree</a><a href="#cert">Diwali Certificate</a><a href="#diya">Virtual Diya Counter</a><a href="#joy">Spread Joy</a></div></header>
+<section id="tree" class="rv"><h2>The Chaturvedi Family</h2><p class="sub">Tap anyone to read their intro.</p><div id="treeBox" class="tree"></div></section>
+<section id="cert" class="rv"><h2>Your Diwali certificate</h2><p class="sub">Type your name, then download or share.</p><canvas id="cv" width="800" height="1000"></canvas>
+<div class="form"><input id="nm" maxlength="30" placeholder="Your name" aria-label="Your name"><div class="btns"><button class="btn" id="dl">Download PNG</button><button class="btn ghost" id="sh">Share</button><button class="btn ghost" id="cp">Copy site link</button></div><p id="cm" class="msg" role="status"></p></div></section>
+<section id="diya" class="rv"><h2>Virtual diya counter</h2><div id="num">0</div><p class="sub">diyas lit on this device</p><div id="row"></div><button class="btn" id="light">Light another diya</button></section>
+<section id="joy" class="rv"><h2>Spread joy</h2><p class="sub">Pin a wish to the wall.</p><div class="form"><input id="wish" maxlength="80" placeholder="Your Diwali wish (80 characters)" aria-label="Your wish"><div class="btns"><button class="btn" id="pin">Pin wish</button><button class="btn ghost" id="wa">Send wishes on WhatsApp</button></div><p id="wm" class="msg" role="status"></p></div><div id="wall"></div></section>
+<footer>Made with love by the Chaturvedi family, Diwali 2026</footer>
+<div class="ov" id="intro" role="dialog" aria-modal="true" aria-label="Intro card"><div class="card"><span class="logo big sm"></span><h3><span id="myName"></span> Chaturvedi</h3><p class="sub">@chaturvedi.family</p><div class="b b1">bro u really need an intro??</div><div class="b b2">no way. AC is enough.</div><div class="chips"><span>main character energy</span><span>no cap, certified</span><span>mithai enjoyer</span></div><button class="btn" id="meet">Meet the family →</button></div></div>
+<div class="ov" id="pop" role="dialog" aria-modal="true" aria-label="Family member"><div class="card"><h3 id="pn"></h3><p class="sub" id="pr"></p><p id="pt"></p><button class="btn ghost" id="pc">Close</button></div></div>
+<script src="data/family.js"></script><script src="js/fireworks.js"></script><script src="js/main.js"></script></body></html>
