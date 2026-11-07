@@ -60,3 +60,4 @@ footer{text-align:center;padding:30px 16px 50px;font-size:13px;color:#c9b8e8}
  #treeBox>.row>.br:last-child{margin-top:26px;border-top:1px dashed rgba(245,184,46,.35)}
  #treeBox>.row>.br:last-child::before{display:none}
 }
+.note-sorry{max-width:420px;margin:-8px auto 22px;padding:8px 16px;border-radius:14px;border:1px dashed rgba(245,184,46,.5);background:rgba(245,184,46,.08);color:var(--g1);font-size:13px}
