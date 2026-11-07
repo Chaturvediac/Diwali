@@ -1,0 +1,40 @@
+const $=s=>document.querySelector(s);
+document.querySelectorAll('.logo').forEach(e=>{e.textContent='AC';const i=new Image();i.alt='AC logo';i.onload=()=>e.replaceChildren(i);i.src='assets/logo.png'});
+$('#myName').textContent=CONFIG.myName;
+for(let i=0;i<(innerWidth<700?12:20);i++){const p=document.createElement('i');p.style.cssText=`left:${Math.random()*100}%;animation-duration:${9+Math.random()*9}s;animation-delay:-${Math.random()*15}s;background:${Math.random()>.5?'#ff9a1f':'#ffc94d'}`;$('#petals').append(p)}
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
+const K={ga:['#3a2a7a','#f5b82e','#f1ece4'],gm:['#3a2a7a','#ff6fa5','#d8d3da'],sm:['#1f4a7a','#5ee0f0','#1a0f1f'],ks:['#3a2a7a','#b79cff','#1a0f1f'],dg:['#5a1a55','#ff9a3d','#1a0f1f']};
+const av=t=>{const[b,c,h]=K[t];return `<svg viewBox="-30 -30 60 60"><rect x="-30" y="-30" width="60" height="60" fill="${b}"/>${t=='dg'?`<ellipse cy="2" rx="13" ry="15" fill="${h}"/>`:''}${t=='gm'?`<circle cy="-18" r="5" fill="${h}"/>`:''}<path d="M-24 30Q-22 10 0 8Q22 10 24 30Z" fill="${c}"/><circle cy="-4" r="10" fill="#e8b48a"/><path d="M-11 -4Q-11 -17 0 -17Q11 -17 11 -4Q6 -11 0 -11Q-6 -11 -11 -4Z" fill="${h}"/><circle cx="-3.5" cy="-3" r="1.3" fill="#2a1a1a"/><circle cx="3.5" cy="-3" r="1.3" fill="#2a1a1a"/></svg>`};
+let n=0;const esc=s=>(s||'').replace(/"/g,'&quot;');
+const P=p=>`<button class="person${p.me?' me':''}" style="--i:${n++}" data-n="${esc(p.name)}" data-r="${esc(p.role)}" data-t="${esc(p.intro)}">${av(p.type)}<b>${p.name}</b><small>${p.role}</small>${p.me?'<em>that\'s me</em>':''}</button>`;
+$('#treeBox').innerHTML=`<div class="gp">${P(FAMILY.grand[0])}<span class="heart">♥</span>${P(FAMILY.grand[1])}</div><div class="stem"></div><div class="row">${FAMILY.sons.map(s=>`<div class="br">${P(s)}<div class="row">${s.kids.map(k=>`<div class="br">${P(k)}</div>`).join('')}</div></div>`).join('')}</div>`;
+document.querySelectorAll('.rv,.tree').forEach(e=>io.observe(e));
+const open=o=>{o.classList.add('open');o.querySelector('button').focus()},shut=o=>o.classList.remove('open');
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>e.target===o&&shut(o)));
+addEventListener('keydown',e=>e.key==='Escape'&&document.querySelectorAll('.ov').forEach(shut));
+$('#openIntro').onclick=()=>{open($('#intro'));burst(innerWidth/2,innerHeight/3)};
+$('#meet').onclick=()=>{shut($('#intro'));$('#tree').scrollIntoView()};
+$('#treeBox').onclick=e=>{const p=e.target.closest('.person');if(!p)return;$('#pn').textContent=p.dataset.n;$('#pr').textContent=p.dataset.r;$('#pt').textContent=p.dataset.t;open($('#pop'))};
+$('#pc').onclick=()=>shut($('#pop'));
+const cv=$('#cv'),x=cv.getContext('2d'),W=800,H=1000,lg=new Image();let ok=false;lg.onload=()=>{ok=true;draw()};lg.src='assets/logo.png';
+function medal(cx,cy,r){x.beginPath();x.arc(cx,cy,r,0,7);x.fillStyle='#1c1048';x.fill();x.lineWidth=5;x.strokeStyle='#c98a1a';x.stroke();if(ok){x.save();x.beginPath();x.arc(cx,cy,r-4,0,7);x.clip();x.drawImage(lg,cx-r,cy-r,2*r,2*r);x.restore()}else{x.fillStyle='#f7c948';x.font=`600 ${r*.9}px "Cormorant Garamond"`;x.textAlign='center';x.fillText('AC',cx,cy+r*.28)}}
+function draw(){const nm=$('#nm').value.trim()||'Your name here';x.fillStyle='#fdf3dc';x.fillRect(0,0,W,H);x.strokeStyle='#c98a1a';x.lineWidth=8;x.strokeRect(36,36,W-72,H-72);x.lineWidth=2;x.strokeRect(54,54,W-108,H-108);x.textAlign='center';medal(W/2,150,60);
+const T=(t,px,y,f,col)=>{x.font=f;x.fillStyle=col;x.fillText(t,px,y)};
+T('CHATURVEDI FAMILY PRESENTS',W/2,270,'500 22px Poppins','#8a5a0a');T('Certificate',W/2,360,'600 90px "Cormorant Garamond"','#a3320f');T('of Diwali joy',W/2,420,'italic 500 46px "Cormorant Garamond"','#5a3a0a');T('proudly presented to',W/2,500,'400 24px Poppins','#8a5a0a');
+let fs=88;do{x.font=`${fs}px "Great Vibes"`;fs-=4}while(x.measureText(nm).width>620&&fs>28);T(nm,W/2,610,x.font,'#a3320f');
+x.fillStyle='#c98a1a';x.fillRect(120,640,560,2);T('for spreading light, sweets and good vibes',W/2,710,'400 26px Poppins','#6b4a14');T('at the Chaturvedi home this Diwali.',W/2,752,'400 26px Poppins','#6b4a14');
+x.fillStyle='#c0392b';x.beginPath();x.moveTo(375,860);x.lineTo(345,960);x.lineTo(390,935);x.lineTo(412,870);x.fill();x.beginPath();x.moveTo(425,860);x.lineTo(455,960);x.lineTo(410,935);x.lineTo(388,870);x.fill();
+x.beginPath();x.arc(400,840,58,0,7);x.fillStyle='#f7c948';x.fill();x.lineWidth=4;x.strokeStyle='#c98a1a';x.stroke();T('AC',400,858,'600 44px "Cormorant Garamond"','#7a4a08');
+T('Diwali 2026',190,890,'400 24px Poppins','#8a5a0a');T('Chaturvedis',610,880,'48px "Great Vibes"','#5a3a0a');T('with love',610,920,'400 20px Poppins','#8a5a0a')}
+draw();Promise.all(['600 40px "Cormorant Garamond"','italic 500 40px "Cormorant Garamond"','40px "Great Vibes"','400 20px Poppins','500 20px Poppins'].map(f=>document.fonts.load(f))).then(draw);
+$('#nm').oninput=draw;
+const need=()=>{if($('#nm').value.trim()){$('#cm').textContent='';return true}$('#cm').textContent='Enter your name first.';return false};
+const blob=()=>new Promise(r=>cv.toBlob(r,'image/png'));
+$('#dl').onclick=async()=>{if(!need())return;const a=document.createElement('a');a.href=URL.createObjectURL(await blob());a.download='Diwali-Certificate.png';a.click();burst(innerWidth/2,innerHeight/2)};
+$('#sh').onclick=async()=>{if(!need())return;const f=new File([await blob()],'Diwali-Certificate.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],text:'My Diwali certificate from the Chaturvedi family'}).catch(()=>{});else window.open('https://wa.me/?text='+encodeURIComponent('I got my Diwali certificate from the Chaturvedi family! '+location.href))};
+$('#cp').onclick=()=>navigator.clipboard.writeText(location.href).then(()=>$('#cm').textContent='Link copied.');
+let d=+localStorage.getItem('diyas')||0;$('#num').textContent=d;
+$('#light').onclick=()=>{d++;localStorage.setItem('diyas',d);const m=$('#num');m.textContent=d;m.classList.remove('bump');void m.offsetWidth;m.classList.add('bump');const r=$('#row'),e=document.createElement('i');e.className='mini';r.append(e);if(r.children.length>12)r.firstChild.remove();burst(innerWidth/2,innerHeight/2)};
+let ws=JSON.parse(localStorage.getItem('wishes')||'[]');const note=t=>{const e=document.createElement('div');e.className='note';e.textContent=t;e.style.cssText=`transform:rotate(${Math.random()*8-4}deg);background:${['#ffd25a','#ff8fb1','#7fe0d0'][Math.random()*3|0]}`;$('#wall').append(e)};ws.forEach(note);
+$('#pin').onclick=()=>{const t=$('#wish').value.trim();if(!t){$('#wm').textContent='Write a wish first.';return}$('#wm').textContent='';note(t);ws.push(t);localStorage.setItem('wishes',JSON.stringify(ws));$('#wish').value=''};
+$('#wa').onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent(CONFIG.wa+' '+location.href));
